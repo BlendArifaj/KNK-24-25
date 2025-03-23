@@ -1,6 +1,6 @@
 package group_01.java_05;
 
-import database.DBConnection;
+import database.DBConnector;
 
 import java.sql.*;
 
@@ -10,7 +10,7 @@ public class Detyra01 {
 
     public static void main(String[] args){
         try{
-            Connection conn = DBConnection.getConnection();
+            Connection conn = DBConnector.getConnection();
             if(conn.isValid(1000)){
                 System.out.println("DB connected!");
             }
