@@ -1,0 +1,7 @@
+CREATE TABLE USERS (
+
+);
+
+CREATE TABLE CLIENTS (
+
+);
