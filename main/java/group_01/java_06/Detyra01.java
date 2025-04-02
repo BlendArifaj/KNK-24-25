@@ -1,16 +1,9 @@
 package group_01.java_06;
 
-import database.DBConnector;
 import models.User;
 import models.dto.CreateUserDto;
 import models.dto.UpdateUserDto;
 import repository.UserRepository;
-
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
 
 public class Detyra01 {
 

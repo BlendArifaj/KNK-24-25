@@ -1,9 +1,9 @@
 package models.dto;
 
 public class CreateUserDto {
-    private String name;
-    private String email;
-    private int age;
+   private String name;
+   private String email;
+   private int age;
 
     public CreateUserDto(String name, String email, int age) {
         this.name = name;
@@ -34,4 +34,6 @@ public class CreateUserDto {
     public void setAge(int age) {
         this.age = age;
     }
+
+
 }

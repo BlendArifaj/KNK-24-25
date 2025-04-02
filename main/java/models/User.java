@@ -16,12 +16,11 @@ public class User {
         this.age = age;
     }
 
-    public static User getInstance(ResultSet resultSet) throws SQLException {
-        int id = resultSet.getInt("id");
-        String name = resultSet.getString("name");
-        String email = resultSet.getString("email");
-        int age = resultSet.getInt("age");
-
+    public static User getInstance(ResultSet result) throws SQLException {
+        int id = result.getInt("id");
+        String name = result.getString("name");
+        String email = result.getString("email");
+        int age = result.getInt("age");
         return new User(id, name, email, age);
     }
 
