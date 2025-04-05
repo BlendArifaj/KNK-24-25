@@ -8,42 +8,14 @@ import models.dto.UpdateUserDto;
 import java.sql.*;
 import java.util.ArrayList;
 
-public class UserRepository {
-//    getAll, getById, create, update, delete
-    private Connection connection;
+public class UserRepository extends BaseRepository<User, CreateUserDto, UpdateUserDto>{
+
     public UserRepository(){
-        this.connection = DBConnector.getConnection();
-    }
-    public ArrayList<User> getAll(){
-        ArrayList<User> users = new ArrayList<>();
-        String query = "SELECT * FROM USERS";
-        try{
-            Statement stm = this.connection.createStatement();
-            ResultSet res = stm.executeQuery(query);
-            while(res.next()){
-                users.add(User.getInstance(res));
-            }
-        }catch (SQLException e){
-            e.printStackTrace();
-        }
-        return users;
+        super("users");
     }
 
-
-    public User getById(int id){
-        String query = "SELECT * FROM USERS WHERE ID = ?";
-        try{
-            PreparedStatement pstm = this.connection.prepareStatement(
-                    query);
-            pstm.setInt(1, id);
-            ResultSet res = pstm.executeQuery();
-            if(res.next()){
-                return User.getInstance(res);
-            }
-        }catch (SQLException e){
-            e.printStackTrace();
-        }
-        return null;
+    public User fromResultSet(ResultSet result) throws SQLException{
+        return User.getInstance(result);
     }
 
     public User create(CreateUserDto userDto){
@@ -90,18 +62,4 @@ public class UserRepository {
         }
         return null;
     }
-
-    public boolean delete(int id){
-        String query = "DELETE FROM USERS WHERE ID = ?";
-        try{
-            PreparedStatement pstm =
-                    this.connection.prepareStatement(query);
-            pstm.setInt(1, id);
-            return pstm.executeUpdate() == 1;
-        }catch (SQLException e){
-            e.printStackTrace();
-        }
-        return false;
-    }
-
 }
