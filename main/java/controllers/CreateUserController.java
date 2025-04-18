@@ -7,6 +7,7 @@ import models.dto.CreateUserDto;
 import services.UserService;
 
 public class CreateUserController {
+//    txtName, txtEmail, txtAge
     @FXML
     private TextField txtName;
 
@@ -15,9 +16,7 @@ public class CreateUserController {
 
     @FXML
     private TextField txtAge;
-
     private UserService userService;
-
     public CreateUserController(){
         this.userService = new UserService();
     }
@@ -30,27 +29,26 @@ public class CreateUserController {
     @FXML
     private void handleSaveClick(){
         try{
-            User user = this.userService.create(this.getUserData());
-            System.out.println("User created successfully!");
-            System.out.println("User ID: " + user.getId());
+            User user = this.userService.create(this.getUserInputData());
+            System.out.println("User inserted successfully!");
+            System.out.println("User Id: " + user.getId());
             this.cleanFields();
         }catch (Exception e){
-            System.out.println("Error while creating user. " + e.getMessage());
+            System.out.println("Error inserting user. " + e.getMessage());
         }
-
-    }
-
-    private CreateUserDto getUserData(){
-        String name = this.txtName.getText();
-        String email = this.txtEmail.getText();
-        int age = Integer.parseInt(this.txtAge.getText());
-
-        return new CreateUserDto(name, email, age);
     }
 
     private void cleanFields(){
         this.txtName.setText("");
-        this.txtAge.setText("");
         this.txtEmail.setText("");
+        this.txtAge.setText("");
     }
+
+    private CreateUserDto getUserInputData(){
+        String name = this.txtName.getText();
+        String email = this.txtEmail.getText();
+        int age = Integer.parseInt(this.txtAge.getText());
+        return new CreateUserDto(name, email, age);
+    }
+
 }
