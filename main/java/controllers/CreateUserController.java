@@ -9,8 +9,10 @@ import services.UserService;
 public class CreateUserController {
     @FXML
     private TextField txtName;
+
     @FXML
     private TextField txtEmail;
+
     @FXML
     private TextField txtAge;
 
@@ -19,26 +21,36 @@ public class CreateUserController {
     public CreateUserController(){
         this.userService = new UserService();
     }
+
     @FXML
-    private void handleClearClick(){
-        System.out.println("Clear button clicked!");
-        this.txtName.setText("");
-        this.txtEmail.setText("");
-        this.txtAge.setText("");
+    private void handleCancelClick(){
+        this.cleanFields();
     }
 
     @FXML
     private void handleSaveClick(){
-        System.out.println("Save button clicked!");
+        try{
+            User user = this.userService.create(this.getUserData());
+            System.out.println("User created successfully!");
+            System.out.println("User ID: " + user.getId());
+            this.cleanFields();
+        }catch (Exception e){
+            System.out.println("Error while creating user. " + e.getMessage());
+        }
+
+    }
+
+    private CreateUserDto getUserData(){
         String name = this.txtName.getText();
         String email = this.txtEmail.getText();
         int age = Integer.parseInt(this.txtAge.getText());
-        CreateUserDto userDto = new CreateUserDto(name, email, age);
-        try{
-            User user = this.userService.create(userDto);
-            System.out.println("User with id: " + user.getId() + " is created!");
-        }catch (Exception e){
-            System.out.println("Error creating a user: " + e.getMessage());
-        }
+
+        return new CreateUserDto(name, email, age);
+    }
+
+    private void cleanFields(){
+        this.txtName.setText("");
+        this.txtAge.setText("");
+        this.txtEmail.setText("");
     }
 }
