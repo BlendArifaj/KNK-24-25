@@ -1,10 +1,15 @@
 package controllers;
 
+import group_03.java_10.Main;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.TextField;
 import models.User;
 import models.dto.CreateUserDto;
+import services.SceneManager;
 import services.UserService;
+import utils.SceneLocator;
 
 public class CreateUserController {
 //    txtName, txtEmail, txtAge
@@ -22,8 +27,15 @@ public class CreateUserController {
     }
 
     @FXML
-    private void handleCancelClick(){
+    private void handleCancelClick() throws Exception{
         this.cleanFields();
+
+//        FXMLLoader loader = new FXMLLoader(
+//                getClass().getResource("/group_03/views/home.fxml")
+//        );
+//        Parent parent = loader.load();
+//        Main.scene.setRoot(parent);
+        SceneManager.load(SceneLocator.HOME_PAGE);
     }
 
     @FXML
