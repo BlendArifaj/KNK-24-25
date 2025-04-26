@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import services.SceneManager;
 
 public class Main extends Application {
     public void start(Stage stage) throws Exception{
@@ -14,7 +15,7 @@ public class Main extends Application {
         Parent parent = fxmlLoader.load();
         Scene scene = new Scene(parent);
 
-//        SceneManager.initialize(scene);
+        SceneManager.initialize(scene);
 
         stage.setScene(scene);
         stage.show();
