@@ -91,8 +91,8 @@
             <TextField fx:id="txtName" layoutX="216.0" layoutY="106.0" />
             <TextField fx:id="txtEmail" layoutX="216.0" layoutY="155.0" />
             <TextField fx:id="txtAge" layoutX="216.0" layoutY="202.0" />
-            <Button cancelButton="true" layoutX="220.0" layoutY="260.0" mnemonicParsing="false" onAction="#handleCancelClick" prefHeight="26.0" prefWidth="64.0" text="Cancel" />
-            <Button layoutX="312.0" layoutY="260.0" mnemonicParsing="false" onAction="#handleSaveClick" prefHeight="26.0" prefWidth="58.0" text="Save" />
+            <Button cancelButton="true" layoutX="220.0" layoutY="260.0" mnemonicParsing="false" onAction="#handleCancelClick" prefHeight="26.0" prefWidth="64.0" text="%btn.cancel" />
+            <Button layoutX="312.0" layoutY="260.0" mnemonicParsing="false" onAction="#handleSaveClick" prefHeight="26.0" prefWidth="58.0" text="%btn.save" />
       </children>
     </AnchorPane>
   </children>
