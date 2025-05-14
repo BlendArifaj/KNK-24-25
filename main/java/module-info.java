@@ -14,6 +14,8 @@ module com.example.knk2425 {
     opens group_01.java_04 to javafx.fxml;
     opens group_01.java_09 to javafx.fxml;
     opens group_01.java_10 to javafx.fxml;
+    opens group_01.java_11 to javafx.fxml;
+    opens group_01.java_12 to javafx.graphics;
 
 
     opens group_02.java_01 to javafx.fxml;
@@ -22,6 +24,8 @@ module com.example.knk2425 {
     opens group_02.java_04 to javafx.fxml;
     opens group_02.java_09 to javafx.fxml;
     opens group_02.java_10 to javafx.fxml;
+    opens group_02.java_11 to javafx.fxml;
+    opens group_02.java_12 to javafx.fxml;
 
     opens group_03.java_01 to javafx.fxml;
     opens group_03.java_02 to javafx.fxml;
@@ -37,6 +41,8 @@ module com.example.knk2425 {
     exports group_01.java_04;
     exports group_01.java_09;
     exports group_01.java_10;
+    exports group_01.java_11;
+    exports group_01.java_12;
 
     exports group_02.java_01;
     exports group_02.java_02;
@@ -44,6 +50,7 @@ module com.example.knk2425 {
     exports group_02.java_04;
     exports group_02.java_09;
     exports group_02.java_10;
+    exports group_02.java_12;
 
     exports group_03.java_01;
     exports group_03.java_02;

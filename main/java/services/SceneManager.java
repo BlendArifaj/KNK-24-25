@@ -8,13 +8,14 @@ import utils.SceneLocator;
 
 public class SceneManager {
     private static SceneManager sceneManager;
+    private static final String DEFAULT_START_PAGE = SceneLocator.LOGIN_PAGE;
     private Scene scene;
     private LanguageManager languageManager;
     private String currentPath;
+    private Pane currentPane;
 
     private SceneManager(){
         this.languageManager = LanguageManager.getInstance();
-        this.currentPath = SceneLocator.HOME_PAGE;
         this.scene = this.initScene();
     }
 
@@ -26,7 +27,7 @@ public class SceneManager {
 
     private Scene initScene(){
         try{
-            return new Scene(this.getParent(currentPath));
+            return new Scene(this.getParent(getPath()));
         }catch (Exception e){
             return null;
         }
@@ -69,10 +70,20 @@ public class SceneManager {
     }
 
     public static void reload() throws Exception{
-        load(sceneManager.currentPath);
+        if(sceneManager.currentPane != null){
+            load(sceneManager.getPath(), sceneManager.currentPane);
+        }
+        load(sceneManager.getPath());
     }
 
     public Scene getScene() {
         return scene;
+    }
+
+    private String getPath(){
+        if(this.currentPath == null){
+            return DEFAULT_START_PAGE;
+        }
+        return this.currentPath;
     }
 }

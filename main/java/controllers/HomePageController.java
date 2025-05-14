@@ -1,12 +1,11 @@
 package controllers;
 
-import group_03.java_10.Main;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.layout.AnchorPane;
+import models.User;
 import services.LanguageManager;
 import services.SceneManager;
+import services.SessionManager;
 import utils.SceneLocator;
 
 import java.util.Locale;
@@ -25,6 +24,11 @@ public class HomePageController {
 //        );
 //        Parent parent = loader.load();
 //        Main.scene.setRoot(parent);
+        SessionManager sessionManager = SessionManager.getInstance();
+        User user = sessionManager.getCurrentUser();
+        System.out.println("User: " + user.getName());
+        System.out.println("Password: " + user.getEmail());
+
         SceneManager.load(SceneLocator.CREATE_USER_PAGE);
     }
 
